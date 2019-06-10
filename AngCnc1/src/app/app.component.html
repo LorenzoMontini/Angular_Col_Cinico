@@ -1,10 +1,20 @@
-<button (click)="Mstrlgn()"></button>
-<button (click)="Mstrcrt()"></button>
+<div *ngIf="!login">
+<button (click)="Mstrlgn()"> Login </button>
+<button (click)="Mstrcrt()"> Create </button>
 
-<div*ngIf="lv"> <!--Login-->
+<form *ngIf="lv"> <!--Login-->
   <h2>Login form</h2>
+</form>
+
+<form *ngIf="cv"> <!--Create-->
+  <h2>Crea il tuo galvani assault team</h2>
+  Id team:<input #id>
+  Leader:<input #leader>
+  Demolition:<input #demol>
+  Assaulter:<input #assault>
+  <button (click)="Create(id, leader, demol, assault)"> Create </button>
+</form>
+
 </div>
 
-<div*ngIf="cv"> <!--Create-->
-  <h2>Create form</h2>
-</div>
+<app-team *ngIf="login" [team]='team'></app-team>
